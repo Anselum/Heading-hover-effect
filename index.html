@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursor Hover</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
+    <nav>
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Projects</a>
+        <a href="">Feedback</a>
+        <a href="">Contact</a>
+    </nav>
+
+    <div class="cursor"></div>
+
+    <script>
+        let circleElement = document.querySelector(".cursor");
+
+        const mouse = { x: 0, y: 0 };
+        const circle = { x: 0, y: 0 };
+
+        window.addEventListener("mousemove", (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        const speed = 0.175;
+
+        const tick = () => {
+            circle.x += (mouse.x - circle.x) * speed;
+            circle.y += (mouse.y - circle.y) * speed;
+
+            const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
+
+            circleElement.style.transform = `${translateTransform}`;
+
+            window.requestAnimationFrame(tick);
+        };
+
+        tick();
+
+    </script>
+
 </body>
+
 </html>
