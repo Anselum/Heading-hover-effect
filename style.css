@@ -42,7 +42,17 @@ nav a {
     height: 40px;
     border: 1px solid white;
     border-radius: 50%;
+    background-color: white;
     position: fixed;
-    inset: -20px 0 0 -20px;
+    inset: 0 0 0 0;
+    transform: translate(-50%, -50%);
     z-index: 1;
+    transition-property: top, left, transform;
+    transition-duration: 0.075s;
+    mix-blend-mode: difference;
+    pointer-events: none;
+}
+
+nav a:hover~.cursor {
+    transform: scale(2);
 }

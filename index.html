@@ -16,9 +16,9 @@
         <a href="">Projects</a>
         <a href="">Feedback</a>
         <a href="">Contact</a>
+        <div class="cursor"></div>
     </nav>
 
-    <div class="cursor"></div>
 
     <script>
         let circleElement = document.querySelector(".cursor");
@@ -31,15 +31,14 @@
             mouse.y = e.y;
         });
 
-        const speed = 0.175;
+        const speed = 1;
 
         const tick = () => {
-            circle.x += (mouse.x - circle.x) * speed;
-            circle.y += (mouse.y - circle.y) * speed;
+            circle.x = (mouse.x) * speed;
+            circle.y = (mouse.y) * speed;
 
-            const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
-
-            circleElement.style.transform = `${translateTransform}`;
+            circleElement.style.left = `${circle.x}px`;
+            circleElement.style.top = `${circle.y}px`;
 
             window.requestAnimationFrame(tick);
         };
